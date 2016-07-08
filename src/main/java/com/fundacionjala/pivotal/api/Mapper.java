@@ -8,15 +8,15 @@ import com.jayway.restassured.response.Response;
 
 import static com.jayway.restassured.path.json.JsonPath.from;
 
-public class Mapper {
+public final class Mapper {
 
     private static final String REGEX_INSIDE_BRACKETS = "(?<=\\[)(.*?)(?=\\])";
 
     private static final String REGEX_DOT = "\\.";
 
-    public static final String REGEX_BRACKETS = "[\\[\\]]";
+    private static final String REGEX_BRACKETS = "[\\[\\]]";
 
-    public static final String REGEX_UNTIL_PROJECT = "^(\\/.*?\\/.*?\\/)";
+    private static final String REGEX_UNTIL_PROJECT = "^(\\/.*?\\/.*?\\/)";
 
     private Mapper() {
     }

@@ -8,11 +8,12 @@ public final class FactoryDriver {
     }
 
     public static IDriver getDriver(String browser) {
-        if (Browser.CHROME.toString().equalsIgnoreCase(browser)) {
+        Browser currentBrowser = Browser.valueOf(browser.toUpperCase());
+        if (Browser.CHROME.equals(currentBrowser)) {
             return new Chrome();
-        } else if (Browser.FIREFOX.toString().equalsIgnoreCase(browser)) {
+        } else if (Browser.FIREFOX.equals(currentBrowser)) {
             return new Firefox();
-        } else if (Browser.REMOTE.toString().equalsIgnoreCase(browser)) {
+        } else if (Browser.REMOTE.equals(currentBrowser)) {
             return new RemoteBrowser();
         } else {
             throw new WebDriverException("Browser not found : " + browser);

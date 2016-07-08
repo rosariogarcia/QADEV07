@@ -14,7 +14,9 @@ import org.apache.log4j.Logger;
  */
 public class PropertiesInfo {
 
-    private static Logger LOGGER = Logger.getLogger(PropertiesInfo.class.getSimpleName());
+    private static final Logger LOGGER = Logger.getLogger(PropertiesInfo.class.getSimpleName());
+
+    private static final String CONFIG_PROPERTIES = "pivotal.properties";
 
     private static PropertiesInfo instance;
 
@@ -31,22 +33,16 @@ public class PropertiesInfo {
         return instance;
     }
 
-
-    /**
-     * asdasdsdad
-     */
-
     private void loadProperties() {
-        properties = new Properties();
         try {
-            FileInputStream fileInputStream = new FileInputStream("pivotal.properties");
+            FileInputStream fileInputStream = new FileInputStream(CONFIG_PROPERTIES);
+            properties = new Properties();
             properties.load(fileInputStream);
             fileInputStream.close();
         } catch (FileNotFoundException e) {
-            LOGGER.warn("The properties file couldn't be found" + e);
+            LOGGER.warn("The properties file couldn't be found", e);
         } catch (IOException e) {
-            e.printStackTrace();
-            LOGGER.warn("A problem of type"+ e.getCause());
+            LOGGER.warn("A problem of type", e.getCause());
         }
     }
 

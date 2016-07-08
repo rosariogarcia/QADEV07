@@ -7,9 +7,9 @@ import com.jayway.restassured.specification.RequestSpecification;
 
 import static com.jayway.restassured.RestAssured.given;
 
-public class RequestManager {
+public final class RequestManager {
 
-    private static RequestSpecification REQUEST = Authentication.getInstance().getRequestSpecification();
+    private static final RequestSpecification REQUEST = Authentication.getInstance().getRequestSpecification();
 
     private RequestManager() {
     }
@@ -33,4 +33,3 @@ public class RequestManager {
         return given().spec(REQUEST).when().delete(endpoint);
     }
 }
-
